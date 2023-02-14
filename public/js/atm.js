@@ -31,7 +31,18 @@ const dispenseMoney = (evt) => {
     $("#money-error").textContent = "We can't dispense that amount of money";
   }
 };
+const validatePhoneNumber = (evt) =>{
+  let re = new RegExp("^[0-9]{10}")
 
+ let phoneNumber = evt.currentTarget.value;
+ 
+
+ if(re.test(phoneNumber)){
+  $("#phone-number-error").textContent = ""
+ }else{
+  $("#phone-number-error").textContent = "Phone Number is not in the correct format"
+ }
+}
 document.addEventListener("DOMContentLoaded", () => {
 
   $("#reset").addEventListener("click", () => {
@@ -45,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     $("#money").focus();
   });
 
-
+  $("#phone-number").addEventListener("input", validatePhoneNumber);
 
   $("#dispense-button").addEventListener("click", dispenseMoney);
 
